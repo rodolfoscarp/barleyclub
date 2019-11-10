@@ -1,0 +1,23 @@
+{
+  "name": "barleyclub",
+  "version": "1.0.0",
+  "description": "Projeto Final Residencia de Software",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Igor Andrade, Rodolfo Scarp e Sarah Carius",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.9",
+    "mongoose-paginate": "^5.0.3",
+    "require-dir": "^1.2.0"
+  }
+}
