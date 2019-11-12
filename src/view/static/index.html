@@ -185,94 +185,12 @@
                     <h1>Nossos Produtos</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-9">
-                    <h4 class="text-right">Nome Cerveja</h4>
-                    <p class="text-justify">É um fato estabelecido há muito tempo que um leitor se distrai com o
-                        conteúdo
-                        legível de uma
-                        página ao examinar seu layout. O objetivo de usar Lorem Ipsum é que ele tem uma distribuição de
-                        letras mais ou menos normal, em vez de usar 'Conteúdo aqui, conteúdo aqui', fazendo com que
-                        pareça um inglês legível. Muitos pacotes de editoração eletrônica e editores de páginas da Web
-                        agora usam Lorem Ipsum como texto padrão do modelo, e uma pesquisa por 'lorem ipsum' descobrirá
-                        muitos sites ainda na infância. Várias versões evoluíram ao longo dos anos, às vezes por
-                        acidente, às vezes de propósito (humor injetado e similares).</p>
-                </div>
-                <div class="col-3">
-                    <img class="img-fluid" src="img/produto.png" alt="Produto">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <img class="img-fluid" src="img/produto.png" alt="Produto">
-                </div>
-                <div class="col-9">
-                    <h4 class="text-left">Nome Cerveja</h4>
-                    <p class="text-justify">É um fato estabelecido há muito tempo que um leitor se distrai com o
-                        conteúdo
-                        legível de uma
-                        página ao examinar seu layout. O objetivo de usar Lorem Ipsum é que ele tem uma distribuição de
-                        letras mais ou menos normal, em vez de usar 'Conteúdo aqui, conteúdo aqui', fazendo com que
-                        pareça um inglês legível. Muitos pacotes de editoração eletrônica e editores de páginas da Web
-                        agora usam Lorem Ipsum como texto padrão do modelo, e uma pesquisa por 'lorem ipsum' descobrirá
-                        muitos sites ainda na infância. Várias versões evoluíram ao longo dos anos, às vezes por
-                        acidente, às vezes de propósito (humor injetado e similares).</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-9">
-                    <h4 class="text-right">Nome Cerveja</h4>
-                    <p class="text-justify">É um fato estabelecido há muito tempo que um leitor se distrai com o
-                        conteúdo
-                        legível de uma
-                        página ao examinar seu layout. O objetivo de usar Lorem Ipsum é que ele tem uma distribuição de
-                        letras mais ou menos normal, em vez de usar 'Conteúdo aqui, conteúdo aqui', fazendo com que
-                        pareça um inglês legível. Muitos pacotes de editoração eletrônica e editores de páginas da Web
-                        agora usam Lorem Ipsum como texto padrão do modelo, e uma pesquisa por 'lorem ipsum' descobrirá
-                        muitos sites ainda na infância. Várias versões evoluíram ao longo dos anos, às vezes por
-                        acidente, às vezes de propósito (humor injetado e similares).</p>
-                </div>
-                <div class="col-3">
-                    <img class="img-fluid" src="img/produto.png" alt="Produto">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <img class="img-fluid" src="img/produto.png" alt="Produto">
-                </div>
-                <div class="col-9">
-                    <h4 class="text-left">Nome Cerveja</h4>
-                    <p class="text-justify">É um fato estabelecido há muito tempo que um leitor se distrai com o
-                        conteúdo
-                        legível de uma
-                        página ao examinar seu layout. O objetivo de usar Lorem Ipsum é que ele tem uma distribuição de
-                        letras mais ou menos normal, em vez de usar 'Conteúdo aqui, conteúdo aqui', fazendo com que
-                        pareça um inglês legível. Muitos pacotes de editoração eletrônica e editores de páginas da Web
-                        agora usam Lorem Ipsum como texto padrão do modelo, e uma pesquisa por 'lorem ipsum' descobrirá
-                        muitos sites ainda na infância. Várias versões evoluíram ao longo dos anos, às vezes por
-                        acidente, às vezes de propósito (humor injetado e similares).</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-9">
-                    <h4 class="text-right">Nome Cerveja</h4>
-                    <p class="text-justify">É um fato estabelecido há muito tempo que um leitor se distrai com o
-                        conteúdo
-                        legível de uma
-                        página ao examinar seu layout. O objetivo de usar Lorem Ipsum é que ele tem uma distribuição de
-                        letras mais ou menos normal, em vez de usar 'Conteúdo aqui, conteúdo aqui', fazendo com que
-                        pareça um inglês legível. Muitos pacotes de editoração eletrônica e editores de páginas da Web
-                        agora usam Lorem Ipsum como texto padrão do modelo, e uma pesquisa por 'lorem ipsum' descobrirá
-                        muitos sites ainda na infância. Várias versões evoluíram ao longo dos anos, às vezes por
-                        acidente, às vezes de propósito (humor injetado e similares).</p>
-                </div>
-                <div class="col-3">
-                    <img class="img-fluid" src="img/produto.png" alt="Produto">
-                </div>
+            <div id="listaDestaques">
+
             </div>
         </div>
     </section>
-   
+
     <footer>
         <div class="container">
             <div class="row">
@@ -285,10 +203,38 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal Adicionar no Carrinho -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="Adicionar"
+        aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <h5></h5>
+                            <h4></h4>
+                            <input type="number" value="1" id="quantidade">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/axios.min.js"></script>
 <script src="js/index.js"></script>
 
 </html>

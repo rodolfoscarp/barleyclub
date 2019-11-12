@@ -14,6 +14,10 @@ routes.delete('/produtos/:id',ControllerProduto.delete);
 
 routes.put('/produtos/:id',ControllerProduto.update);
 
+routes.get('/produtos/destaques',ControllerProduto.showDestaques);
+
+routes.get('/produtos/:id',ControllerProduto.index);
+
 routes.get('/pedidos',ControllerPedido.show);
 
 routes.post('/pedidos',ControllerPedido.insert);

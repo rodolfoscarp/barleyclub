@@ -22,5 +22,15 @@ module.exports = {
             { new: true, useFindAndModify: false });
 
         return res.json(produtos);
+    },
+    async showDestaques(req,res){
+        const produtos = await Produto.find({destaque: true});
+
+        return res.json(produtos);
+    },
+    async index(req,res){
+        const produtos = await Produto.findById(req.params.id);
+
+        return res.json(produtos);
     }
 }

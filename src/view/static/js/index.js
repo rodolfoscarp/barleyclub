@@ -1,4 +1,9 @@
 $(() => {
+
+    //****************************************************
+    //Funções para exibição dos videos de fundo
+    //****************************************************
+
     $('.navbar a[href^="#"]').on('click', function (e) {
         e.preventDefault();
         var id = $(this).attr('href'),
@@ -20,4 +25,79 @@ $(() => {
         });
     }
     window.onload = deferVideo;
+
+    //*****************************************************
+    //Carregar cervejas destaque
+    //*****************************************************
+
+    axios.get('http://localhost:8160/api/produtos/destaques')
+        .then((res) => {
+            res.data.forEach(
+                (e, index) => {
+                    let cerveja;
+                    if (index % 2 == 0) {
+                        cerveja =
+                            `<div class="row">
+                                <div class="col-9">
+                                    <h4 class="text-left">${e.nome}</h4>
+                                    <p class="text-justify">${e.descricao}</p>
+                                    <h4>R$ ${e.preco.toFixed(2)}</h4>
+                                    <p>
+                                        <a href="#" class="btn btn-warning" 
+                                        role="button" data-toggle="modal" data-target="#modalAdicionar" 
+                                        data-whatever="${e._id}">Adicionar ao carrinho
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-3">                                 
+                                    <img class="img-fluid" src="${e.url_img}" alt="Produto">
+                                </div>
+                            </div>`;
+                    }
+                    else {
+                        cerveja =
+                            `<div class="row">
+                            <div class="col-3">
+                                <img class="img-fluid" src="${e.url_img}" alt="Produto">
+                            </div>
+                            <div class="col-9">
+                                <h4 class="text-right">${e.nome}</h4>
+                                <p class="text-justify">${e.descricao}</p>
+                                <h4 class="text-right">R$ ${e.preco.toFixed(2)}</h4>
+                                <p class="text-right">
+                                    <a href="#" class="btn btn-warning" 
+                                    role="button" data-toggle="modal" data-target="#modalAdicionar"
+                                    data-whatever="${e._id}">Adicionar ao carrinho</a>
+                                </p>
+                            </div>
+                        </div>`
+                    }
+                    $("#listaDestaques").append(cerveja);
+                })
+        })
+
+
+    //*********************************************************************************
+    // Preenche o modal de compras
+    //*********************************************************************************
+
+    $('#modalAdicionar').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Botão que acionou o modal
+        var recipient = button.data('whatever') // Extrai informação dos atributos data-*
+        // Se necessário, você pode iniciar uma requisição AJAX aqui e, então, fazer a atualização em um callback.
+        // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+        axios.get(`http://localhost:8160/api/produtos/${recipient}`)
+            .then((res) => {
+                console.log(res.data);
+                var modal = $(this)
+                modal.find('h5').text(res.data.nome);
+                modal.find('img').attr('src', res.data.url_img);
+            })
+    })
+
+    $("#quantidade").change(()=>{
+        if($("#quantidade").val() < 1){
+            $("#quantidade").val("1");
+        }
+    })
 })
