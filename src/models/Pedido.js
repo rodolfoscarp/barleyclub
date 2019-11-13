@@ -19,42 +19,38 @@ const PedidoSchema = new mongoose.Schema({
         },
         endereco: {
             rua: {
-                type:String,
-                require:true
+                type: String,
+                require: true
             },
-            bairro:{
-                type:String,
-                require:true
+            bairro: {
+                type: String,
+                require: true
             },
-            cidade:{
-                type:String,
-                require:true
+            cidade: {
+                type: String,
+                require: true
             },
-            estado:{
-                type:String,
-                require:true
+            estado: {
+                type: String,
+                require: true
             },
-            complemento:{
-                type:String,
+            complemento: {
+                type: String,
                 require: false
             },
-            cep:{
-                type:Number,
-                require:true
-            },
-            numero:{
-                type:Number,
-                require:true
+            cep: {
+                type: Number,
+                require: true
             }
         },
-        email:{
-            type:String,
-            require:true
+        email: {
+            type: String,
+            require: true
         }
     },
-    status:{
-        type:String,
-        require:true
+    status: {
+        type: String,
+        require: true
     }
 })
 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/carrinho.css">
+
+    <title>Barley Club</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+
+                <!-- Logo -->
+
+                <a class="navbar-brand" href="index.html">
+                    Barley Club
+                </a>
+
+                <!-- Botão responsivo -->
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Opções do Menu Esquerdo -->
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="listaprodutos.html">Produtos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Menu Direita-->
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+
+                            <!--Formulario de Consulta-->
+
+                            <form class="form-inline">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
+                                    aria-label="Pesquisar">
+                                <button class="btn btn-outline-light" type="submit">
+                                    <img class="img-fluid" src="img/search-icon.png" alt="Procurar">
+                                </button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img class="img-fluid" src="img/shop-icon.png" alt="Carrinho" id="carrinhoIcon">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--Itens Carrinho -->
+
+    <section id="carrinho">
+        <div class="container" id="itensCarrinho">
+            <div class="row">
+                <div class="col-4">
+                    Descrição
+                </div>
+                <div class="col-2">
+                    Quantidade
+                </div>
+                <div class="col-2">
+                    Preço
+                </div>
+                <div class="col-2">
+                    Subtotal
+                </div>
+                <div class="col-2">
+                    Opções
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img class="img-fluid" src="img/logo-sm.png" alt="Logo Barley Club">
+                </div>
+                <div class="col">
+                    <i class="fa fa-copyright" aria-hidden="true">Copyright Barley Club</i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Adicionar no Carrinho -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalDados" tabindex="-1" role="dialog" aria-labelledby="Endereco" aria-hidden="true"
+        data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="form-group">
+                            <!-- Nome -->
+                            <label for="modalNome" class="control-label">Nome</label>
+                            <input type="text" class="form-control" id="modalNome" placeholder="Nome">
+                        </div>
+
+                        <div class="form-group">
+                                <!-- E-mail -->
+                                <label for="modalEmail" class="control-label">Email</label>
+                                <input type="text" class="form-control" id="modalEmail" placeholder="Email">
+                            </div>
+
+                        <div class="form-group">
+                            <!-- Street 1 -->
+                            <label for="modalEndereco" class="control-label">Endereço</label>
+                            <input type="text" class="form-control" id="modalEndereco" placeholder="Endereço">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Street 1 -->
+                            <label for="modalComplento" class="control-label">Complemento</label>
+                            <input type="text" class="form-control" id="modalComplemento" placeholder="Complemento">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Street 2 -->
+                            <label for="modalBairro" class="control-label">Bairro</label>
+                            <input type="text" class="form-control" id="modalBairro" placeholder="Bairro">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- City-->
+                            <label for="modalCidade" class="control-label">Cidade</label>
+                            <input type="text" class="form-control" id="modalCidade" placeholder="Cidade">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- City-->
+                            <label for="modalEstado" class="control-label">Estado</label>
+                            <input type="text" class="form-control" id="modalEstado" placeholder="Estado">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Zip Code-->
+                            <label for="modalCep" class=" control-label">Cep</label>
+                            <input type="number" class="form-control" id="modalCep" name="zip" placeholder="##.###-##">
+                        </div>
+
+                        <div class="form-group">
+                            <!-- Submit Button -->
+                            <button type="button" class="btn btn-primary" onclick="enviarPedido()">Enviar</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/carrinho.js"></script>
+
+</html>
