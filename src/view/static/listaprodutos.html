@@ -42,9 +42,6 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                        <li class="nav-item">
 
                             <!--Formulario de Consulta-->
 
@@ -57,8 +54,8 @@
                             </form>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <img class="img-fluid" src="img/shop-icon.png" alt="Carrinho">
+                            <a class="nav-link" href="carrinho.html">
+                                <img class="img-fluid" src="img/shop-icon.png" alt="Carrinho" id="carrinhoIcon">
                             </a>
                         </li>
                     </ul>
@@ -161,63 +158,41 @@
 
     </footer>
 
+     <!-- Modal Adicionar no Carrinho -->
     <!-- Modal -->
-    <a href='#' class='link-modal' data-toggle='modal'
-        onclick="openModal('${imagem}','${element.name}','${element.tagline}','${element.food_pairing}','${element.description}')"
-        data-target='#product'>
-        <!-- Inicio Modal -->
-        <div class="modal fade" id="product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-
-                    <!-- Corpo modal -->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-
-                            <!-- -->
-                            <div class="row">
-                                <div class="col-4">
-                                    <img class="img-fluid h-100" alt="Image Modal" id="modal-img">
-                                </div>
-                                <div class="col-8">
-                                    <h3 id="modal-name">Titulo</h3>
-                                    <h5 id="modal-tagline">TagLine</h4>
-                                        <p id="modal-features"></p>
-                                        <p id="modal-description"></p>
-                                        <p>
-                                            <strong>Best served width: </strong>
-                                        </p>
-                                        <ul id="modal-served">
-
-                                        </ul>
-                                </div>
+    <div class="modal fade" id="modalAdicionar" tabindex="-1" role="dialog" aria-labelledby="Adicionar"
+        aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <h5></h5>
+                            <h4></h4>
+                            <div class="form-group">
+                              <label for="">Quantidade</label>
+                              <input type="number"
+                                class="form-control" placeholder="" id="quantidade">
+                              <small id="helpId" class="form-text text-muted">Insira a Quantidade desejada</small>
                             </div>
                         </div>
-
-                        <!-- -->
-                        <div class="row">
-                            <h4>You migth also like: </h4>
-                        </div>
-
-                        <!-- Decks Modal -->
-                        <div class="row">
-                            <div class="col">
-
-                            </div>
-                            <div class="col">
-
-                            </div>
-                            <div class="col">
-
-                            </div>
-                        </div>
-
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="carrinho" class="btn btn-outline-primary">Adicionar ao Carrinho</button>
+                    <button type="button" id="comprar" class="btn btn-primary">Comprar Agora</button>
                 </div>
             </div>
         </div>
-        <!-- Fim Modal -->
+    </div>
 </body>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/popper.js"></script>

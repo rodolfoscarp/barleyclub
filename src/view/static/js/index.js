@@ -98,6 +98,7 @@ $(() => {
                 modal.find('h4').text(`R$ ${res.data.preco.toFixed(2)}`)
                 modal.find('img').attr('src', res.data.url_img);
                 modal.find('#carrinho').attr('onclick', `adicionar("${res.data._id}")`);
+                modal.find('#comprar').attr('onclick', `comprar("${res.data._id}")`);
             })
     })
 
@@ -126,5 +127,35 @@ function adicionar(id) {
             carrinhoBarley.produtos.push(pedido);
 
             sessionStorage.setItem('carrinhoBarley',JSON.stringify(carrinhoBarley));
+
+            window.location.reload();
+        })
+}
+
+function comprar(id) {
+
+    var carrinhoBarley = sessionStorage.getItem('carrinhoBarley');
+
+    if (carrinhoBarley == null || carrinhoBarley == undefined) {
+        carrinhoBarley = {
+            produtos: []
+       }
+    }
+    else{
+        carrinhoBarley = JSON.parse(carrinhoBarley);
+    }
+
+    axios.get(`http://localhost:8160/api/produtos/${id}`)
+        .then((res) => {
+            pedido = {
+                quantidade: $("#quantidade").val(),
+                produto: res.data
+            }
+
+            carrinhoBarley.produtos.push(pedido);
+
+            sessionStorage.setItem('carrinhoBarley',JSON.stringify(carrinhoBarley));
+
+            window.location.href = 'carrinho.html';
         })
 }

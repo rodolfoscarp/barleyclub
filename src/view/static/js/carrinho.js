@@ -104,6 +104,8 @@ function enviarPedido(){
         axios.post('http://localhost:8160/api/pedidos',pedido)
         .then((res)=>{
             alert("Pedido realizado com sucesso!");
+            sessionStorage.clear();
+            window.location.href = 'index.html'
         })
         console.log(pedido);
     }

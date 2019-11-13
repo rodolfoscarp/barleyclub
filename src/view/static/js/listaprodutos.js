@@ -1,5 +1,10 @@
 $(() => {
 
+    var carrinhoBarley = sessionStorage.getItem('carrinhoBarley');
+    if (carrinhoBarley) {
+        $("#carrinhoIcon").attr("src", "img/shop-icon-full.png");
+    }
+
     //****************************************************
     //Funções para exibição dos videos de fundo
     //****************************************************
@@ -34,23 +39,23 @@ $(() => {
         .then((res) => {
             res.data.forEach(
                 (e, index) => {
-                  let cerveja = 
-                 ` <div class="col-sm-12 col-md-6 col-lg-4 col-ex-3 p-3">
+                    let cerveja =
+                        ` <div class="col-sm-12 col-md-6 col-lg-4 col-ex-3 p-3">
                   <div class="card text-center h-100 p-2">
                       <img src="${e.url_img}" class="img-fluid card-img-top">
                       <div class="card-body>
                           <div class="card-title">
                             <h3>${e.nome}</h3>
                           </div>
-                          <p class="card-text">
-                            <a href="#" class="btn btn-primary">Mais Detalhes...</a>
-                          <p/>
+                          <a href="#" class="btn btn-primary" 
+                                    role="button" data-toggle="modal" data-target="#modalAdicionar"
+                                    data-whatever="${e._id}">Mais Detalhes...</a>
                       </div>
                   </div>
               </div>`;
-              $("#listaProdutos").append(cerveja);
+                    $("#listaProdutos").append(cerveja);
+                })
         })
-    })
 
 
     //*********************************************************************************
@@ -64,16 +69,68 @@ $(() => {
         // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
         axios.get(`http://localhost:8160/api/produtos/${recipient}`)
             .then((res) => {
-                console.log(res.data);
                 var modal = $(this)
                 modal.find('h5').text(res.data.nome);
+                modal.find('h4').text(`R$ ${res.data.preco.toFixed(2)}`)
                 modal.find('img').attr('src', res.data.url_img);
+                modal.find('#carrinho').attr('onclick', `adicionar("${res.data._id}")`);
+                modal.find('#comprar').attr('onclick', `comprar("${res.data._id}")`);
             })
     })
-
-    $("#quantidade").change(()=>{
-        if($("#quantidade").val() < 1){
-            $("#quantidade").val("1");
-        }
-    })
 })
+
+function adicionar(id) {
+
+    var carrinhoBarley = sessionStorage.getItem('carrinhoBarley');
+
+    if (carrinhoBarley == null || carrinhoBarley == undefined) {
+        carrinhoBarley = {
+            produtos: []
+       }
+    }
+    else{
+        carrinhoBarley = JSON.parse(carrinhoBarley);
+    }
+
+    axios.get(`http://localhost:8160/api/produtos/${id}`)
+        .then((res) => {
+            pedido = {
+                quantidade: $("#quantidade").val(),
+                produto: res.data
+            }
+
+            carrinhoBarley.produtos.push(pedido);
+
+            sessionStorage.setItem('carrinhoBarley',JSON.stringify(carrinhoBarley));
+
+            window.location.reload();
+        })
+}
+
+function comprar(id) {
+
+    var carrinhoBarley = sessionStorage.getItem('carrinhoBarley');
+
+    if (carrinhoBarley == null || carrinhoBarley == undefined) {
+        carrinhoBarley = {
+            produtos: []
+       }
+    }
+    else{
+        carrinhoBarley = JSON.parse(carrinhoBarley);
+    }
+
+    axios.get(`http://localhost:8160/api/produtos/${id}`)
+        .then((res) => {
+            pedido = {
+                quantidade: $("#quantidade").val(),
+                produto: res.data
+            }
+
+            carrinhoBarley.produtos.push(pedido);
+
+            sessionStorage.setItem('carrinhoBarley',JSON.stringify(carrinhoBarley));
+
+            window.location.href = 'carrinho.html';
+        })
+}
